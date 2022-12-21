@@ -1,34 +1,39 @@
 <template>
   <div class="container">
     <HeaderLayout></HeaderLayout>
-    <HeroImg></HeroImg>
+    <router-view :products="products"></router-view>
+    <!-- <HomePage :products="products"></HomePage> -->
   </div>
 </template>
 
 <script setup>
-import HeaderLayout from "./components/layouts/HeaderLayout.vue";
-import HeroImg from "./components/HeroImg.vue";
+import HeaderLayout from "@/components/layouts/HeaderLayout.vue";
+
+/* import HomePage from "./views/HomePage/HomePage.vue"; */
+import { ref } from "vue";
+
+const products = ref([
+  {
+    title: "Lucy Lamp",
+    price: 399,
+    image: "/images/productsImages/LucyLamp.jpg",
+  },
+  {
+    title: "Rustic Vase Set",
+    price: 155,
+    image: "/images/productsImages/RusticVaseSet.jpg",
+  },
+  {
+    title: "The Dandy Chair",
+    price: 250,
+    image: "/images/productsImages/TheDandyChair.jpg",
+  },
+  {
+    title: "Silky Vase",
+    price: 125,
+    image: "/images/productsImages/SilkyVase.jpg",
+  },
+]);
 </script>
 
-<style lang="scss">
-@import url("https://fonts.cdnfonts.com/css/satoshi");
-@import url("https://fonts.cdnfonts.com/css/clash-display");
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Satoshi", sans-serif;
-  margin: 0;
-  padding: 0;
-  /* font-family: "Clash Display", sans-serif; */
-}
-img {
-  max-width: 100%;
-}
-.container {
-  max-width: 1440px;
-  margin: auto;
-}
-</style>
+<style lang="scss"></style>

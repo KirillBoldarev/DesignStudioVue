@@ -1,20 +1,16 @@
 <template>
-  <div class="hero">
-    <div class="hero__info">
-      <div class="hero__text">
-        <h2 class="hero__title">
-          Luxury homeware for people who love timeless design quality
-        </h2>
-        <div class="hero__description">
-          Shop the new Spring 2022 collection today
-        </div>
-      </div>
-      <button class="hero__button">View collection</button>
-    </div>
-  </div>
+  <section class="hero">
+    <InfoBox
+      :title="'Luxury homeware for people who love timeless design quality'"
+      :description="'Shop the new Spring 2022 collection today'"
+      :button="'View collection'"
+    ></InfoBox>
+  </section>
 </template>
 
-<script setup></script>
+<script setup>
+import InfoBox from "./_InfoBox.vue";
+</script>
 
 <style lang="scss" scoped>
 .hero {
@@ -51,20 +47,20 @@
     margin: 0px;
   }
   &__description {
-    font-family: "Satoshi";
+    font-family: var(--satoshi);
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    color: #5b5676;
+    color: var(--gray);
   }
   &__button {
-    font-family: "Satoshi";
+    font-family: var(--satoshi);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    color: #2a254b;
+    color: var(--purple);
     border: none;
 
     width: 170px;

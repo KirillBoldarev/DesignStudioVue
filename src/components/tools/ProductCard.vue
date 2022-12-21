@@ -1,0 +1,52 @@
+<template>
+  <div class="product">
+    <a class="product__image" href="">
+      <img :src="props.image" :alt="props.title" />
+    </a>
+    <a class="product__title" href="">{{ props.title }}</a>
+    <span class="product__price">{{ props.price }}$</span>
+  </div>
+</template>
+
+<script setup>
+const props = defineProps({
+  image: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    font-family: "Clash Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    color: var(--purple);
+  }
+
+  &__price {
+    font-family: var(--satoshi);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--purple);
+  }
+}
+</style>

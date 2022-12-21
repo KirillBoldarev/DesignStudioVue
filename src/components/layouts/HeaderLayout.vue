@@ -2,26 +2,30 @@
   <header class="header">
     <div class="header__top">
       <div class="header__top--search">
-        <img src="/icons/HeaderSearch.svg" alt="Search" />
+        <img class="header__icon" src="icons/HeaderSearch.svg" alt="Search" />
       </div>
-      <a class="header__top--logo" href="">AVION</a>
+      <router-link class="header__top--logo" to="/">AVION</router-link>
       <div class="header__top--buttonbox">
         <div class="header__top--button">
-          <img src="/icons/HeaderShop.svg" alt="Shop" />
+          <router-link to="/cart">
+            <img src="/icons/HeaderShop.svg" alt="Shop" />
+          </router-link>
         </div>
         <div class="header__top--button">
-          <img src="/icons/HeaderProfile.svg" alt="Profile" />
+          <router-link to="/profile">
+            <img src="/icons/HeaderProfile.svg" alt="Profile" />
+          </router-link>
         </div>
       </div>
     </div>
     <nav class="header__nav">
-      <a
+      <router-link
         class="header__nav--link"
-        v-for="link in links"
-        :key="link"
-        :href="link.path"
-        >{{ link.name }}</a
-      >
+        v-for="(link, i) in links"
+        :key="i"
+        :to="link.path"
+        >{{ link.name }}
+      </router-link>
     </nav>
   </header>
 </template>
@@ -29,13 +33,13 @@
 <script setup>
 import { ref } from "vue";
 const links = ref([
-  { name: "Plant pots", path: "plant" },
-  { name: "Ceramics", path: "ceramics" },
-  { name: "Tables", path: "tables" },
-  { name: "Chairs", path: "chairs" },
-  { name: "Crockery", path: "crockery" },
-  { name: "Tableware", path: "tableware" },
-  { name: "Cutlery", path: "cutlery" },
+  { name: "Plant pots", path: "/plant" },
+  { name: "Ceramics", path: "/ceramics" },
+  { name: "Tables", path: "/tables" },
+  { name: "Chairs", path: "/chairs" },
+  { name: "Crockery", path: "/crockery" },
+  { name: "Tableware", path: "/tableware" },
+  { name: "Cutlery", path: "/cutlery" },
 ]);
 </script>
 
@@ -44,6 +48,13 @@ const links = ref([
   background-color: white;
   height: 132px;
   width: 100%;
+
+  &__icon {
+    width: 25px;
+    height: 25px;
+    color: red;
+  }
+
   &__top {
     display: flex;
     flex-direction: row;
@@ -53,8 +64,6 @@ const links = ref([
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin: 0 28px;
 
-    &--search {
-    }
     &--logo {
       font-family: "Clash Display";
       font-style: normal;
@@ -78,7 +87,7 @@ const links = ref([
     padding: 20px 20px;
 
     &--link {
-      font-family: "Satoshi";
+      font-family: var(--satoshi);
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
