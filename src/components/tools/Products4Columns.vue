@@ -9,12 +9,13 @@
         :price="product.price"
       ></ProductCard>
     </div>
-    <button class="product-4line--button">View collection</button>
+    <ButtonVue>View collection</ButtonVue>
   </section>
 </template>
 
 <script setup>
 import ProductCard from "./ProductCard.vue";
+import ButtonVue from "./ButtonVue.vue";
 
 const props = defineProps({
   products: {
@@ -37,19 +38,6 @@ const props = defineProps({
     align-items: center;
     gap: 30px;
     padding: 20px;
-  }
-  &--button {
-    font-family: var(--satoshi);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: var(--purple);
-    border: none;
-    width: 170px;
-    height: 56px;
-    padding: 10px;
-    cursor: pointer;
   }
 }
 </style>

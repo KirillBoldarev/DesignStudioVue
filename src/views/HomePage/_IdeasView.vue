@@ -3,7 +3,8 @@
     <InfoBox
       :title="'It started with a small idea'"
       :description="'A global brand with local beginnings, our story begain in a small studio in South London in early 2014'"
-      :button="'View collection'"
+      :button-title="'View collection'"
+      :button-color="'white'"
       :background="'var(--purple)'"
       :color-title="'#FFFFFF'"
       :color-description="'#FFFFFF'"

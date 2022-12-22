@@ -8,21 +8,16 @@
         {{ props.description }}
       </div>
     </div>
-    <button class="info__button">{{ props.button }}</button>
+    <ButtonVue :color="props.buttonColor || 'primary'">{{
+      buttonTitle
+    }}</ButtonVue>
   </div>
 </template>
 
 <script setup>
+import ButtonVue from "../../components/tools/ButtonVue.vue";
 const props = defineProps({
   title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  button: {
     type: String,
     required: true,
   },
@@ -31,9 +26,21 @@ const props = defineProps({
     required: false,
     default: "",
   },
+  description: {
+    type: String,
+    required: true,
+  },
   colorDescription: {
     type: String,
     default: "#5b5676",
+    required: false,
+  },
+  buttonTitle: {
+    type: String,
+    required: true,
+  },
+  buttonColor: {
+    type: String,
     required: false,
   },
   background: {
@@ -67,7 +74,6 @@ const props = defineProps({
     font-weight: 400;
     font-size: 32px;
     line-height: 140%;
-    color: var(--dark);
     margin: 0px;
   }
   &__description {
@@ -76,20 +82,6 @@ const props = defineProps({
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    color: var(--gray);
-  }
-  &__button {
-    font-family: var(--satoshi);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: var(--purple);
-    border: none;
-    cursor: pointer;
-    width: 170px;
-    height: 56px;
-    padding: 10px;
   }
 }
 </style>

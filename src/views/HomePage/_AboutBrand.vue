@@ -18,25 +18,25 @@ const features = ref([
   {
     title: "Next day as standard",
     description: "Order before 3pm and get your order the next day as standard",
-    icon: "/icons/BrandDelivery.svg",
+    icon: "/icons/Delivery.svg",
   },
   {
     title: "Made by true artisans",
     description:
       "Handmade crafted goods made with real passion and craftmanship",
-    icon: "/icons/BrandCheck.svg",
+    icon: "/icons/Check.svg",
   },
   {
     title: "Unbeatable prices",
     description:
       "For our materials and quality you won’t find better prices anywhere",
-    icon: "/icons/BrandCard.svg",
+    icon: "/icons/Card.svg",
   },
   {
     title: "Recycled packaging",
     description:
       "We use 100% recycled to ensure our footprint is more manageable",
-    icon: "/icons/BrandFlower.svg",
+    icon: "/icons/Flower.svg",
   },
 ]);
 </script>

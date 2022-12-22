@@ -2,14 +2,14 @@
   <div class="container">
     <HeaderLayout></HeaderLayout>
     <router-view :products="products"></router-view>
-    <!-- <HomePage :products="products"></HomePage> -->
+    <FooterLayout></FooterLayout>
   </div>
 </template>
 
 <script setup>
 import HeaderLayout from "@/components/layouts/HeaderLayout.vue";
+import FooterLayout from "./components/layouts/FooterLayout.vue";
 
-/* import HomePage from "./views/HomePage/HomePage.vue"; */
 import { ref } from "vue";
 
 const products = ref([

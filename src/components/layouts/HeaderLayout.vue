@@ -2,18 +2,18 @@
   <header class="header">
     <div class="header__top">
       <div class="header__top--search">
-        <img class="header__icon" src="icons/HeaderSearch.svg" alt="Search" />
+        <img src="/icons/Search.svg" alt="Search" />
       </div>
       <router-link class="header__top--logo" to="/">AVION</router-link>
       <div class="header__top--buttonbox">
         <div class="header__top--button">
           <router-link to="/cart">
-            <img src="/icons/HeaderShop.svg" alt="Shop" />
+            <img src="/icons/Shop.svg" alt="Shop" />
           </router-link>
         </div>
         <div class="header__top--button">
           <router-link to="/profile">
-            <img src="/icons/HeaderProfile.svg" alt="Profile" />
+            <img src="/icons/Profile.svg" alt="Profile" />
           </router-link>
         </div>
       </div>
@@ -48,12 +48,6 @@ const links = ref([
   background-color: white;
   height: 132px;
   width: 100%;
-
-  &__icon {
-    width: 25px;
-    height: 25px;
-    color: red;
-  }
 
   &__top {
     display: flex;
