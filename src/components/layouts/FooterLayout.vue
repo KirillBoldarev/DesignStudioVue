@@ -61,6 +61,7 @@
           <SubscribtionForm
             :buttonColor="'white'"
             :bgInput="'#5b5676'"
+            colorText="white"
             placeholder="your@email.com"
           ></SubscribtionForm>
         </div>
@@ -68,7 +69,32 @@
 
       <div class="footer__bottom">
         <strong class="footer__copyright">Copyright 2022 Avion LTD</strong>
-        <div class="footer__links"></div>
+        <div class="footer__links">
+          <a href=""
+            ><img
+              class="footer__icon"
+              src="\icons\instagram.svg"
+              alt="Instagram"
+          /></a>
+          <a href=""
+            ><img class="footer__icon" src="\icons\facebook.svg" alt="Facebook"
+          /></a>
+          <a href=""
+            ><img class="footer__icon" src="\icons\linkedin.svg" alt="Linkedin"
+          /></a>
+          <a href=""
+            ><img
+              class="footer__icon"
+              src="\icons\pinterest.svg"
+              alt="Pinterest"
+          /></a>
+          <a href=""
+            ><img class="footer__icon" src="\icons\twitter.svg" alt="Twitter"
+          /></a>
+          <a href=""
+            ><img class="footer__icon" src="\icons\skype.svg" alt="Skype"
+          /></a>
+        </div>
       </div>
     </div>
   </footer>
@@ -136,6 +162,21 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
     font-size: 14px;
     line-height: 19px;
     color: #ffffff;
+  }
+  &__links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    @media (max-width: 499px) {
+      gap: 10px;
+    }
+  }
+  &__icon {
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
   }
 }
 </style>

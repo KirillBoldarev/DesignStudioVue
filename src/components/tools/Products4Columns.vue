@@ -9,7 +9,7 @@
         :price="product.price"
       ></ProductCard>
     </div>
-    <ButtonVue>View collection</ButtonVue>
+    <ButtonVue :color="'purple'">View collection</ButtonVue>
   </section>
 </template>
 

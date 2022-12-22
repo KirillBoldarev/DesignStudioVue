@@ -4,7 +4,7 @@
       class="subscribe__input"
       type="text"
       :placeholder="props.placeholder"
-      :style="{ background: props.bgInput }"
+      :style="{ background: props.bgInput, color: props.colorText }"
     />
     <ButtonVue :color="props.buttonColor || 'purple'">Sign up</ButtonVue>
   </form>
@@ -23,6 +23,10 @@ const props = defineProps({
     required: false,
   },
   placeholder: {
+    type: String,
+    required: false,
+  },
+  colorText: {
     type: String,
     required: false,
   },
