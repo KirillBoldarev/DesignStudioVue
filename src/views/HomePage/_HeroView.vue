@@ -21,5 +21,9 @@ import InfoBox from "./_InfoBox.vue";
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+
+  @media (max-width: 767px) {
+    height: 450px;
+  }
 }
 </style>

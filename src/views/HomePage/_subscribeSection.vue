@@ -49,9 +49,18 @@ import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
   justify-content: space-around;
   background-image: url("/images/SubscribeBackground.jpg");
   background-size: cover;
-  padding: 100px 10px;
-  color: var(--dark);
+  padding: 100px 25px;
+  color: var(--cream);
   gap: 40px;
+
+  @media (max-width: 767px) {
+    gap: 20px;
+    padding: 50px 15px;
+  }
+  @media (max-width: 520px) {
+    gap: 20px;
+    padding: 30px 15px;
+  }
 
   &__text {
     display: flex;
@@ -59,6 +68,11 @@ import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
     align-items: center;
     justify-content: space-around;
     gap: 30px;
+
+    @media (max-width: 767px) {
+      gap: 20px;
+      align-items: flex-start;
+    }
   }
 
   &__title {
@@ -68,8 +82,11 @@ import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
     font-size: 32px;
     line-height: 140%;
     text-align: center;
-
     margin: 0;
+
+    @media (max-width: 767px) {
+      font-size: 22px;
+    }
   }
 
   &__description {
@@ -78,12 +95,21 @@ import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
   }
   &__features {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: flex-start;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 10px;
+    }
 
     &--item {
       display: flex;

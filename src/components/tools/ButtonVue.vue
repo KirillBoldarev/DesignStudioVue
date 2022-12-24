@@ -61,6 +61,13 @@ const props = defineProps({
   height: 56px;
   padding: 10px;
   cursor: pointer;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 100px;
+    padding: 5px;
+  }
 
   &--primary {
     background: var(--dark);

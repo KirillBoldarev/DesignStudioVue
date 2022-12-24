@@ -9,7 +9,9 @@
         :price="product.price"
       ></ProductCard>
     </div>
-    <ButtonVue :color="'purple'">View collection</ButtonVue>
+    <ButtonVue class="mobileFullWidth" :color="'purple'"
+      >View collection</ButtonVue
+    >
   </section>
 </template>
 
@@ -32,12 +34,22 @@ const props = defineProps({
   gap: 30px;
   text-align: center;
 
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     padding: 20px;
+
+    @media (max-width: 767px) {
+      gap: 15px;
+      padding: 10px;
+    }
   }
 }
 </style>

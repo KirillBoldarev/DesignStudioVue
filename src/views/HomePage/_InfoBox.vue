@@ -8,9 +8,11 @@
         {{ props.description }}
       </div>
     </div>
-    <ButtonVue :color="props.buttonColor || 'primary'">{{
-      buttonTitle
-    }}</ButtonVue>
+    <ButtonVue
+      class="mobileFullWidth"
+      :color="props.buttonColor || 'primary'"
+      >{{ buttonTitle }}</ButtonVue
+    >
   </div>
 </template>
 
@@ -62,26 +64,44 @@ const props = defineProps({
     max-width: 630px;
     gap: 20px;
     height: 450px;
+
+    @media (max-width: 767px) {
+      padding: 20px;
+      gap: 10px;
+      height: 300px;
+    }
   }
   &__text {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media (max-width: 767px) {
+      gap: 10px;
+    }
   }
   &__title {
     font-family: var(--clash);
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 140%;
     margin: 0px;
+
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
   }
   &__description {
     font-family: var(--satoshi);
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 150%;
+
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
   }
 }
 </style>

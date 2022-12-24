@@ -30,3 +30,9 @@ img {
   max-width: 1440px;
   margin: auto;
 }
+
+.mobileFullWidth{
+  @media (max-width:750px){
+    width: 100% !important;
+  }
+}

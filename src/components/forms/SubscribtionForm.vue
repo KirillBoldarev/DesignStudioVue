@@ -53,6 +53,12 @@ const props = defineProps({
     height: 100%;
     max-height: 56px;
 
+    @media (max-width: 767px) {
+      font-size: 12px;
+      padding: 5px;
+      line-height: 14px;
+    }
+
     &:focus {
       border: none;
       box-shadow: none;

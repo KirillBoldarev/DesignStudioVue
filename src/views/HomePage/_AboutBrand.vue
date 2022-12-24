@@ -50,6 +50,11 @@ const features = ref([
   padding: 40px;
   gap: 35px;
 
+  @media (max-width: 767px) {
+    gap: 15px;
+    padding: 15px;
+  }
+
   &__title {
     font-family: "Clash Display";
     font-style: normal;
@@ -57,13 +62,19 @@ const features = ref([
     font-size: 24px;
     line-height: 140%;
     color: var(--purple);
+    text-align: center;
   }
   &__sections {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     gap: 20px;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   &__feature {
     display: flex;
@@ -71,6 +82,12 @@ const features = ref([
     gap: 12px;
     background: var(--cream);
     padding: 25px;
+    height: 100%;
+
+    @media (max-width: 767px) {
+      font-size: 15px;
+      padding: 15px;
+    }
 
     &--icon {
       width: 25px;
@@ -86,6 +103,10 @@ const features = ref([
       color: var(--purple);
       margin: 0;
       padding: 0;
+
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
     }
 
     &--description {
@@ -94,6 +115,10 @@ const features = ref([
       font-weight: 400;
       font-size: 16px;
       color: var(--purple);
+
+      @media (max-width: 767px) {
+        font-size: 12px;
+      }
     }
   }
 }
