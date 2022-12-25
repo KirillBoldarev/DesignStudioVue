@@ -17,7 +17,7 @@
             <router-link class="footer__menu--link" to="/Popular"
               >Popular this week</router-link
             >
-            <router-link class="footer__menu--link" to="/Products"
+            <router-link class="footer__menu--link" to="/products"
               >All products</router-link
             >
           </div>
@@ -135,6 +135,14 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
 
+    &:first-child {
+      align-items: flex-start;
+    }
+
+    &:last-child {
+      align-items: flex-end;
+    }
+
     @media (max-width: 767px) {
       gap: 35px;
     }
@@ -151,13 +159,13 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
   &__menu {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    /*     align-items: flex-start;
+    justify-content: flex-start; */
     gap: 20px;
 
     @media (max-width: 767px) {
-      align-items: flex-start;
-      justify-content: flex-start;
+      /*       align-items: flex-start;
+      justify-content: flex-start; */
     }
 
     &--title {

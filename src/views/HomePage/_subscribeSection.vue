@@ -81,7 +81,6 @@ import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
     font-weight: 400;
     font-size: 32px;
     line-height: 140%;
-    text-align: center;
     margin: 0;
 
     @media (max-width: 767px) {

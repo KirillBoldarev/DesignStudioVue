@@ -12,6 +12,7 @@ import AboutBrand from "./_AboutBrand.vue";
 import Products4Columns from "../../components/tools/Products4Columns.vue";
 import IdeasView from "./_IdeasView.vue";
 import SubscribeSection from "./_subscribeSection.vue";
+
 /* import { MqResponsive } from "vue3-mq"; */
 
 const props = defineProps({

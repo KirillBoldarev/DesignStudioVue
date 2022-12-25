@@ -63,12 +63,12 @@ const props = defineProps({
     padding: 50px;
     max-width: 630px;
     gap: 20px;
-    height: 450px;
+    height: auto;
 
     @media (max-width: 767px) {
       padding: 20px;
       gap: 10px;
-      height: 300px;
+      height: auto;
     }
   }
   &__text {

@@ -28,12 +28,7 @@ import InfoBox from "./_InfoBox.vue";
     background-image: url(/images/Room.jpg);
     background-size: cover;
     background-position: center center;
-
-    height: 450px;
-
-    @media (max-width: 767px) {
-      height: 300px;
-    }
+    height: 100%;
   }
 }
 </style>
