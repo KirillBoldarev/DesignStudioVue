@@ -124,7 +124,7 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
     padding: 20px;
     gap: 25px;
 
-    @media (max-width: 767px) {
+    @media (max-width: 800px) {
       padding: 10px;
       flex-direction: column;
     }
@@ -153,7 +153,8 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 20px;
+
     @media (max-width: 767px) {
       align-items: flex-start;
       justify-content: flex-start;
@@ -182,9 +183,10 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
       font-size: 16px;
       line-height: 19px;
       color: #ffffff;
+      text-decoration: none;
 
       @media (max-width: 767px) {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 10px;
       }
     }
