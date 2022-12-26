@@ -3,12 +3,24 @@
     <div class="header__top">
       <div class="header__top--buttonbox">
         <button class="header__button">
-          <img src="/icons/Search.svg" alt="Search" />
+          <img class="header__icon" src="/icons/Search.svg" alt="Search" />
         </button>
         <MqResponsive target="phone"
-          ><button class="header__button">
-            <img src="/icons/Menu.svg" alt="Profile" /></button
-        ></MqResponsive>
+          ><button @click="isMenuOpen = !isMenuOpen" class="header__button">
+            <img class="header__icon" src="/icons/Menu.svg" alt="Profile" />
+          </button>
+        </MqResponsive>
+        <MqResponsive target="phone">
+          <div v-if="isMenuOpen" class="header__mobileMenu">
+            <router-link
+              class="header__nav--link"
+              v-for="(link, i) in links"
+              :key="i"
+              :to="link.path"
+              >{{ link.name }}
+            </router-link>
+          </div>
+        </MqResponsive>
       </div>
 
       <router-link class="header__top--logo" to="/">AVION</router-link>
@@ -16,11 +28,11 @@
       <MqResponsive target="tablet+">
         <div class="header__top--buttonbox">
           <router-link to="/cart">
-            <img src="/icons/Shop.svg" alt="Shop" />
+            <img class="header__icon" src="/icons/Shop.svg" alt="Shop" />
           </router-link>
 
           <router-link to="/profile">
-            <img src="/icons/Profile.svg" alt="Profile" />
+            <img class="header__icon" src="/icons/Profile.svg" alt="Profile" />
           </router-link>
         </div>
       </MqResponsive>
@@ -51,6 +63,8 @@ const links = ref([
   { name: "Tableware", path: "/tableware" },
   { name: "Cutlery", path: "/cutlery" },
 ]);
+
+const isMenuOpen = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -58,13 +72,7 @@ const links = ref([
   background-color: white;
   height: auto;
   width: 100%;
-
-  &__button {
-    border: none;
-    background-color: none;
-    background: none;
-    cursor: pointer;
-  }
+  position: relative;
 
   &__top {
     display: flex;
@@ -77,6 +85,7 @@ const links = ref([
 
     @media (max-width: 767px) {
       border-bottom: none;
+      margin: 0 10px;
     }
 
     &--search {
@@ -106,6 +115,10 @@ const links = ref([
       @media (max-width: 767px) {
         order: 2;
       }
+
+      @media (max-width: 320px) {
+        gap: 10px;
+      }
     }
   }
 
@@ -128,7 +141,40 @@ const links = ref([
       font-size: 16px;
       line-height: 22px;
       color: #726e8d;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
+  &__button {
+    border: none;
+    background-color: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    min-width: 35px;
+    min-height: 35px;
+
+    @media (max-width: 320px) {
+      min-width: 25px;
+      min-height: 25px;
+    }
+  }
+
+  &__mobileMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    top: 81px;
+    right: 0px;
+    background: #ffffff;
+    padding: 20px 40px;
+    gap: 30px;
   }
 }
 </style>

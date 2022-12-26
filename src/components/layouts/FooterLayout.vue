@@ -173,13 +173,13 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
       font-family: var(--clash);
       font-style: normal;
       font-weight: 400;
-      font-size: 18px;
+      font-size: 20px;
       line-height: 20px;
       color: #ffffff;
       margin: 0;
 
       @media (max-width: 767px) {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 10px;
       }
     }

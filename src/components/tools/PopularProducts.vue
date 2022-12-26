@@ -1,29 +1,35 @@
 <template>
   <section class="product-4line__container">
-    <div class="product-4line">
+    <div v-if="data" class="product-4line">
       <ProductCard
-        v-for="(product, i) in props.products"
+        v-for="(product, i) in popularProducts"
         :key="i"
-        :image="product.image"
+        :id="product.id"
+        :image="product.img"
         :title="product.title"
         :price="product.price"
       ></ProductCard>
     </div>
-    <ButtonVue class="mobileFullWidth" :color="'purple'"
+    <ButtonVue v-if="data" class="mobileFullWidth" :color="'purple'"
       >View collection</ButtonVue
     >
+    <loaderSpinner v-if="!data"></loaderSpinner>
   </section>
 </template>
 
 <script setup>
 import ProductCard from "./ProductCard.vue";
 import ButtonVue from "./ButtonVue.vue";
+import { ref, onMounted } from "vue";
+import api from "@/api";
+import loaderSpinner from "./loaderSpinner.vue";
 
-const props = defineProps({
-  products: {
-    type: Array,
-    required: false,
-  },
+const popularProducts = ref([]);
+const data = ref(false);
+
+onMounted(async () => {
+  popularProducts.value = await api.getPopularProducts();
+  data.value = true;
 });
 </script>
 

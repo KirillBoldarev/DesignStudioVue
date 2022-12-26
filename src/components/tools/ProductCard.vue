@@ -1,15 +1,21 @@
 <template>
   <div class="product">
-    <a class="product__image" href="">
+    <router-link class="product__image" :to="`/${id}`">
       <img :src="props.image" :alt="props.title" />
-    </a>
-    <a class="product__title" href="">{{ props.title }}</a>
+    </router-link>
+    <router-link class="product__title" :to="`/${id}`">{{
+      props.title
+    }}</router-link>
     <span class="product__price">{{ props.price }}$</span>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     required: true,

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <HeaderLayout></HeaderLayout>
-    <router-view :products="products"></router-view>
+    <router-view :products="popularProducts"></router-view>
     <FooterLayout></FooterLayout>
   </div>
 </template>
@@ -9,31 +9,14 @@
 <script setup>
 import HeaderLayout from "@/components/layouts/HeaderLayout.vue";
 import FooterLayout from "./components/layouts/FooterLayout.vue";
+import { ref, onMounted } from "vue";
+import api from "./api";
 
-import { ref } from "vue";
+const popularProducts = ref([]);
 
-const products = ref([
-  {
-    title: "Lucy Lamp",
-    price: 399,
-    image: "/images/productsImages/LucyLamp.jpg",
-  },
-  {
-    title: "Rustic Vase Set",
-    price: 155,
-    image: "/images/productsImages/RusticVaseSet.jpg",
-  },
-  {
-    title: "The Dandy Chair",
-    price: 250,
-    image: "/images/productsImages/TheDandyChair.jpg",
-  },
-  {
-    title: "Silky Vase",
-    price: 125,
-    image: "/images/productsImages/SilkyVase.jpg",
-  },
-]);
+onMounted(async () => {
+  popularProducts.value = await api.getPopularProducts();
+});
 </script>
 
 <style lang="scss"></style>
