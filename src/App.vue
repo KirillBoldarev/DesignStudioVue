@@ -8,7 +8,7 @@
 
 <script setup>
 import HeaderLayout from "@/components/layouts/HeaderLayout.vue";
-import FooterLayout from "./components/layouts/FooterLayout.vue";
+import FooterLayout from "@/components/layouts/FooterLayout.vue";
 import { ref, onMounted } from "vue";
 import api from "./api";
 

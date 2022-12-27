@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import ButtonVue from "../../components/tools/ButtonVue.vue";
+import ButtonVue from "@/components/tools/ButtonVue.vue";
 const props = defineProps({
   title: {
     type: String,

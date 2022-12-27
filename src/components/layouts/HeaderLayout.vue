@@ -85,7 +85,7 @@ const isMenuOpen = ref(false);
 
     @media (max-width: 767px) {
       border-bottom: none;
-      margin: 0 10px;
+      margin: 0 15px;
     }
 
     &--search {

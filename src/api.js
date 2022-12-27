@@ -14,4 +14,18 @@ export default {
       console.log(error);
     }
   },
+
+  async getProduct(id) {
+    try {
+      const response = await HTTP.get(`/products/${id}`, {
+        headers: {
+          Prefer: `code=200, example=Example ${id}`,
+        },
+      });
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };

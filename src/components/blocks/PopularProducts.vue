@@ -1,35 +1,35 @@
 <template>
   <section class="product-4line__container">
-    <div v-if="data" class="product-4line">
-      <ProductCard
+    <loaderSpinner v-if="loading"></loaderSpinner>
+    <div v-if="!loading" class="product-4line">
+      <ProductCardMini
         v-for="(product, i) in popularProducts"
         :key="i"
         :id="product.id"
         :image="product.img"
         :title="product.title"
         :price="product.price"
-      ></ProductCard>
+      ></ProductCardMini>
     </div>
-    <ButtonVue v-if="data" class="mobileFullWidth" :color="'purple'"
+    <ButtonVue v-if="!loading" class="mobileFullWidth" :color="'purple'"
       >View collection</ButtonVue
     >
-    <loaderSpinner v-if="!data"></loaderSpinner>
   </section>
 </template>
 
 <script setup>
-import ProductCard from "./ProductCard.vue";
-import ButtonVue from "./ButtonVue.vue";
+import ProductCardMini from "@/components/blocks/ProductCardMini.vue";
+import ButtonVue from "@/components/tools/ButtonVue.vue";
+import loaderSpinner from "@/components/tools/loaderSpinner.vue";
 import { ref, onMounted } from "vue";
 import api from "@/api";
-import loaderSpinner from "./loaderSpinner.vue";
 
 const popularProducts = ref([]);
-const data = ref(false);
+const loading = ref(true);
 
 onMounted(async () => {
   popularProducts.value = await api.getPopularProducts();
-  data.value = true;
+  loading.value = false;
 });
 </script>
 

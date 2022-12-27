@@ -1,12 +1,12 @@
 <template>
   <div class="product">
-    <router-link class="product__image" :to="`/${id}`">
+    <router-link class="product__image" :to="`products/${id}`">
       <img :src="props.image" :alt="props.title" />
     </router-link>
-    <router-link class="product__title" :to="`/${id}`">{{
-      props.title
-    }}</router-link>
-    <span class="product__price">{{ props.price }}$</span>
+    <router-link class="product__title" :to="`products/${id}`">
+      {{ props.title }}
+    </router-link>
+    <span class="product__price"> {{ props.price }}$ </span>
   </div>
 </template>
 

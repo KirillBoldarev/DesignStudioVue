@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import InfoBox from "./_InfoBox.vue";
+import InfoBox from "@/components/blocks/InfoBox.vue";
 </script>
 
 <style lang="scss" scoped>

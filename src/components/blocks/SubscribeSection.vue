@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import SubscribtionForm from "../../components/forms/SubscribtionForm.vue";
+import SubscribtionForm from "@/components/forms/SubscribtionForm.vue";
 </script>
 
 <style lang="scss" scoped>
