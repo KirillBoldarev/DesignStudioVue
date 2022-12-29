@@ -1,9 +1,11 @@
 <template>
-  <loaderSpinner v-if="loading"></loaderSpinner>
-  <ProductCard v-else :product="currentProduct"></ProductCard>
-  <PopularProducts></PopularProducts>
-  <AboutBrand></AboutBrand>
-  <SubscribeSection></SubscribeSection>
+  <section class="productContainer">
+    <loaderSpinner v-if="loading"></loaderSpinner>
+    <ProductCard v-else :product="currentProduct"></ProductCard>
+    <PopularProducts></PopularProducts>
+    <AboutBrand></AboutBrand>
+    <SubscribeSection></SubscribeSection>
+  </section>
 </template>
 
 <script setup>
@@ -25,8 +27,15 @@ const loading = ref(true);
 
 onMounted(async () => {
   productId.value = route.params.id;
-  console.log(productId.value);
   currentProduct.value = await api.getProduct(productId.value);
   loading.value = false;
 });
 </script>
+
+<style lang="scss" scoped>
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

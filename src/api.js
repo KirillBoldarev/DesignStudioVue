@@ -1,8 +1,8 @@
 import axios from "axios";
-import config from "@/config";
 
 export const HTTP = axios.create({
-  baseURL: config.MOCK,
+  baseURL:
+    "https://stoplight.io/mocks/frontend-skills/frontend-skills/100999302",
 });
 
 export default {
@@ -22,7 +22,6 @@ export default {
           Prefer: `code=200, example=Example ${id}`,
         },
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

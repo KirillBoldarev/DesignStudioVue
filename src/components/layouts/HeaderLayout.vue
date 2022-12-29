@@ -27,13 +27,24 @@
 
       <MqResponsive target="tablet+">
         <div class="header__top--buttonbox">
-          <router-link to="/cart">
-            <img class="header__icon" src="/icons/Shop.svg" alt="Shop" />
-          </router-link>
+          <div class="header__button">
+            <router-link to="/cart">
+              <img class="header__icon" src="/icons/Cart.svg" alt="Cart" />
+              <span v-if="cartStore.cart.length" class="header__counter">{{
+                cartStore.cart.length
+              }}</span>
+            </router-link>
+          </div>
 
-          <router-link to="/profile">
-            <img class="header__icon" src="/icons/Profile.svg" alt="Profile" />
-          </router-link>
+          <div class="header__button">
+            <router-link to="/profile">
+              <img
+                class="header__icon"
+                src="/icons/Profile.svg"
+                alt="Profile"
+              />
+            </router-link>
+          </div>
         </div>
       </MqResponsive>
     </div>
@@ -52,8 +63,11 @@
 
 <script setup>
 import { MqResponsive } from "vue3-mq";
-
+import { useCartStore } from "@/stores/Cart";
 import { ref } from "vue";
+
+const cartStore = useCartStore();
+
 const links = ref([
   { name: "Plant pots", path: "/plant" },
   { name: "Ceramics", path: "/ceramics" },
@@ -148,11 +162,30 @@ const isMenuOpen = ref(false);
       }
     }
   }
+
   &__button {
     border: none;
     background-color: none;
     background: none;
     cursor: pointer;
+    position: relative;
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -45%;
+    bottom: 0;
+    position: absolute;
+    width: 15x;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--purple);
+    font-size: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px;
   }
 
   &__icon {
