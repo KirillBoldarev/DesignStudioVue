@@ -159,13 +159,9 @@ import SubscribtionForm from "../forms/SubscribtionForm.vue";
   &__menu {
     display: flex;
     flex-direction: column;
-    /*     align-items: flex-start;
-    justify-content: flex-start; */
     gap: 20px;
 
     @media (max-width: 767px) {
-      /*       align-items: flex-start;
-      justify-content: flex-start; */
     }
 
     &--title {
