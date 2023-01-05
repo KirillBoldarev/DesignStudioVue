@@ -46,8 +46,10 @@
         </div>
       </div>
       <div class="cart__footer">
-        <strong class="cart__amount">Subtotal </strong>
-        <ButtonVue :color="'purple'">Go to checkout</ButtonVue>
+        <strong class="cart__amount">Subtotal {{ totalPrice }} $</strong>
+        <ButtonVue @click="calculateTotal()" :color="'purple'"
+          >Go to checkout</ButtonVue
+        >
       </div>
     </div>
   </section>
@@ -56,12 +58,21 @@
 <script setup>
 import ButtonVue from "@/components/tools/ButtonVue.vue";
 import { useCartStore } from "@/stores/Cart.js";
+import { computed } from "vue";
 
 const cartStore = useCartStore();
 
 function calculatePrice(price, quantity) {
   return price * quantity;
 }
+
+const totalPrice = computed(() => {
+  const total = cartStore.cart.reduce(
+    (accum, product) => accum + product.quantity * product.price,
+    0
+  );
+  return Math.floor(total * 100) / 100;
+});
 </script>
 
 <style lang="scss" scoped>
