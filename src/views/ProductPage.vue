@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import loaderSpinner from "@/components/tools/LoaderSpinner.vue";
@@ -30,6 +30,17 @@ onMounted(async () => {
   currentProduct.value = await api.getProduct(productId.value);
   loading.value = false;
 });
+
+watch(route, () => {
+  productId.value = route.params.id;
+  loading.value = true;
+  getProduct(productId.value);
+});
+
+async function getProduct(id) {
+  currentProduct.value = await api.getProduct(id);
+  loading.value = false;
+}
 </script>
 
 <style lang="scss" scoped>

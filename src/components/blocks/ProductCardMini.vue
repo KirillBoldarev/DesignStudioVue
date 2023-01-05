@@ -1,16 +1,20 @@
 <template>
   <div class="product">
-    <router-link class="product__image" :to="`products/${id}`">
+    <router-link class="product__image" :to="linkToProduct">
       <img :src="props.image" :alt="props.title" />
     </router-link>
-    <router-link class="product__title" :to="`products/${id}`">
+    <router-link class="product__title" :to="linkToProduct">
       {{ props.title }}
     </router-link>
-    <span class="product__price"> {{ props.price }}$ </span>
+    <span @click="info" class="product__price"> {{ props.price }}$ </span>
   </div>
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+const route = useRoute();
+
 const props = defineProps({
   id: {
     type: String,
@@ -29,6 +33,18 @@ const props = defineProps({
     required: true,
   },
 });
+
+const linkToProduct = computed(() => {
+  if (route.path.includes("/product")) {
+    return props.id;
+  }
+  return `products/${props.id}`;
+});
+
+function info() {
+  console.log("роут пасс", route.path);
+  console.log("роут парамс", route.params);
+}
 </script>
 
 <style lang="scss" scoped>

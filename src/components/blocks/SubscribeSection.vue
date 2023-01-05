@@ -52,6 +52,7 @@ import SubscribtionForm from "@/components/forms/SubscribtionForm.vue";
   padding: 100px 25px;
   color: var(--cream);
   gap: 40px;
+  width: 100%;
 
   @media (max-width: 767px) {
     gap: 20px;
