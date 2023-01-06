@@ -18,27 +18,52 @@
               <div class="product__image">
                 <img :src="product.image" alt="Image" />
               </div>
+
               <div class="product__textbox">
                 <h4 class="product__name">{{ product.name }}</h4>
-
                 <span class="product__price">{{ product.price }} $</span>
+                <MqResponsive target="phone">
+                  <div class="product__quantity">
+                    <span
+                      class="product__quantity--symbol"
+                      @click="cartStore.changeQuantity(product, 'minus')"
+                    >
+                      -
+                    </span>
+                    <span class="product__quantity--value">{{
+                      product.quantity
+                    }}</span>
+                    <span
+                      class="product__quantity--symbol"
+                      @click="cartStore.changeQuantity(product, 'plus')"
+                    >
+                      +
+                    </span>
+                  </div>
+                </MqResponsive>
               </div>
             </div>
-            <div class="product__quantity">
-              <span
-                class="product__quantity--symbol"
-                @click="cartStore.changeQuantity(product, 'minus')"
-                >-</span
-              >
-              <span class="product__quantity--value">{{
-                product.quantity
-              }}</span>
-              <span
-                class="product__quantity--symbol"
-                @click="cartStore.changeQuantity(product, 'plus')"
-                >+</span
-              >
-            </div>
+
+            <MqResponsive target="tablet+">
+              <div class="product__quantity">
+                <span
+                  class="product__quantity--symbol"
+                  @click="cartStore.changeQuantity(product, 'minus')"
+                >
+                  -
+                </span>
+                <span class="product__quantity--value">{{
+                  product.quantity
+                }}</span>
+                <span
+                  class="product__quantity--symbol"
+                  @click="cartStore.changeQuantity(product, 'plus')"
+                >
+                  +
+                </span>
+              </div>
+            </MqResponsive>
+
             <div class="product__total">
               {{ calculatePrice(product.price, product.quantity) }} $
             </div>
@@ -46,8 +71,14 @@
         </div>
       </div>
       <div class="cart__footer">
-        <strong class="cart__amount">Subtotal {{ totalPrice }} $</strong>
-        <ButtonVue @click="calculateTotal()" :color="'purple'"
+        <span class="cart__footer--amount"
+          >Subtotal
+          <span class="cart__footer--total">{{ totalPrice }} $</span></span
+        >
+        <span class="cart__footer--info"
+          >Taxes and shipping are calculated at checkout</span
+        >
+        <ButtonVue class="mobileFullWidth" :color="'purple'"
           >Go to checkout</ButtonVue
         >
       </div>
@@ -59,6 +90,7 @@
 import ButtonVue from "@/components/tools/ButtonVue.vue";
 import { useCartStore } from "@/stores/Cart.js";
 import { computed } from "vue";
+import { MqResponsive } from "vue3-mq";
 
 const cartStore = useCartStore();
 
@@ -83,8 +115,15 @@ const totalPrice = computed(() => {
   &__container {
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
     background: #ffffff;
+
+    @media (max-width: 767px) {
+      padding: 15px;
+    }
+    @media (max-width: 450px) {
+      padding: 10px;
+    }
   }
   &__title {
     font-family: var(--clash);
@@ -93,6 +132,10 @@ const totalPrice = computed(() => {
     font-size: 36px;
     line-height: 140%;
     color: var(--purple);
+
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
   }
 
   &__content {
@@ -110,9 +153,14 @@ const totalPrice = computed(() => {
       line-height: 140%;
       color: var(--purple);
       text-align: center;
+      margin: 0;
 
       & span:first-child {
         text-align: left;
+      }
+
+      @media (max-width: 767px) {
+        display: none;
       }
     }
 
@@ -128,6 +176,14 @@ const totalPrice = computed(() => {
     &--product {
       display: grid;
       grid-template-columns: 3fr 1fr 1fr;
+
+      @media (max-width: 767px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
     }
   }
 
@@ -137,27 +193,83 @@ const totalPrice = computed(() => {
     gap: 10px;
     align-items: flex-end;
     padding: 10px;
+    color: #4e4d93;
+
+    &--amount {
+      font-family: var(--clash);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: right;
+    }
+
+    &--info {
+      font-family: var(--satoshi);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      text-align: right;
+    }
+
+    &--total {
+      font-family: var(--clash);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 140%;
+      text-align: right;
+      color: var(--purple);
+      padding: 0px 10px;
+    }
   }
 }
 
 .product {
+  &__image {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+
+    @media (max-width: 767px) {
+      display: grid;
+      width: auto;
+      height: auto;
+      grid-area: a;
+    }
+
+    @media (max-width: 400px) {
+      display: grid;
+      min-width: 150px;
+      min-height: 150px;
+      grid-area: a;
+    }
+  }
+
   &__about {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-  }
+    gap: 10px;
 
-  &__image img {
-    max-width: 300px;
-    max-height: 150px;
+    @media (max-width: 767px) {
+      gap: 10px;
+    }
   }
 
   &__textbox {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     color: var(--purple);
     justify-content: space-around;
-    padding: 10px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      align-items: center;
+      grid-area: b;
+    }
   }
 
   &__name {
@@ -167,14 +279,11 @@ const totalPrice = computed(() => {
     font-size: 20px;
     line-height: 140%;
     margin: 0px;
-  }
 
-  &__description {
-    font-family: "Satoshi";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
+    @media (max-width: 767px) {
+      text-align: center;
+      font-size: 16px;
+    }
   }
 
   &__price {
@@ -183,6 +292,10 @@ const totalPrice = computed(() => {
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   &__quantity {
@@ -196,11 +309,16 @@ const totalPrice = computed(() => {
     font-family: var(--satoshi);
     color: var(--purple);
     background-color: #ffffff;
-    padding: 5px;
+    gap: 10px;
+    padding: 15px;
 
     @media (max-width: 767px) {
       width: 100%;
+      grid-area: c;
+      padding: 5px;
+      gap: 20px;
     }
+
     &--symbol {
       font-style: normal;
       font-size: 22px;
@@ -221,6 +339,10 @@ const totalPrice = computed(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 }
 </style>
