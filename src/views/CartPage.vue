@@ -9,65 +9,76 @@
           <span>Total</span>
         </div>
         <div class="cart__content--list">
-          <div
-            v-for="(product, i) in cartStore.cart"
-            :key="i"
-            class="cart__content--product"
-          >
-            <div class="product__about">
-              <div class="product__image">
-                <img :src="product.image" alt="Image" />
+          <TransitionGroup name="slide-fade">
+            <div
+              v-for="product in cartStore.cart"
+              :key="product.id"
+              class="cart__content--product"
+            >
+              <div class="product__about">
+                <div class="product__image">
+                  <img :src="product.image" alt="Image" />
+                </div>
+
+                <div class="product__textbox">
+                  <h4 class="product__name">
+                    {{ product.name }}
+                  </h4>
+                  <span class="product__price">{{ product.price }} $</span>
+                  <MqResponsive target="phone">
+                    <div class="product__quantity">
+                      <span
+                        class="product__quantity--symbol"
+                        @click="cartStore.changeQuantity(product, 'minus')"
+                      >
+                        -
+                      </span>
+                      <span class="product__quantity--value">{{
+                        product.quantity
+                      }}</span>
+                      <span
+                        class="product__quantity--symbol"
+                        @click="cartStore.changeQuantity(product, 'plus')"
+                      >
+                        +
+                      </span>
+                    </div>
+                  </MqResponsive>
+                </div>
               </div>
 
-              <div class="product__textbox">
-                <h4 class="product__name">{{ product.name }}</h4>
-                <span class="product__price">{{ product.price }} $</span>
-                <MqResponsive target="phone">
-                  <div class="product__quantity">
-                    <span
-                      class="product__quantity--symbol"
-                      @click="cartStore.changeQuantity(product, 'minus')"
-                    >
-                      -
-                    </span>
-                    <span class="product__quantity--value">{{
-                      product.quantity
-                    }}</span>
-                    <span
-                      class="product__quantity--symbol"
-                      @click="cartStore.changeQuantity(product, 'plus')"
-                    >
-                      +
-                    </span>
-                  </div>
-                </MqResponsive>
+              <MqResponsive target="tablet+">
+                <div class="product__quantity">
+                  <span
+                    class="product__quantity--symbol"
+                    @click="cartStore.changeQuantity(product, 'minus')"
+                  >
+                    -
+                  </span>
+                  <span class="product__quantity--value">{{
+                    product.quantity
+                  }}</span>
+                  <span
+                    class="product__quantity--symbol"
+                    @click="cartStore.changeQuantity(product, 'plus')"
+                  >
+                    +
+                  </span>
+                </div>
+              </MqResponsive>
+
+              <div class="product__total">
+                {{ calculatePrice(product.price, product.quantity) }} $
+              </div>
+              <div class="product__delete">
+                <img
+                  @click="cartStore.deleteFromCart(product)"
+                  src="/icons/Close.svg"
+                  alt="Close"
+                />
               </div>
             </div>
-
-            <MqResponsive target="tablet+">
-              <div class="product__quantity">
-                <span
-                  class="product__quantity--symbol"
-                  @click="cartStore.changeQuantity(product, 'minus')"
-                >
-                  -
-                </span>
-                <span class="product__quantity--value">{{
-                  product.quantity
-                }}</span>
-                <span
-                  class="product__quantity--symbol"
-                  @click="cartStore.changeQuantity(product, 'plus')"
-                >
-                  +
-                </span>
-              </div>
-            </MqResponsive>
-
-            <div class="product__total">
-              {{ calculatePrice(product.price, product.quantity) }} $
-            </div>
-          </div>
+          </TransitionGroup>
         </div>
       </div>
       <div class="cart__footer">
@@ -176,6 +187,7 @@ const totalPrice = computed(() => {
     &--product {
       display: grid;
       grid-template-columns: 3fr 1fr 1fr;
+      position: relative;
 
       @media (max-width: 767px) {
         display: flex;
@@ -304,13 +316,13 @@ const totalPrice = computed(() => {
     align-items: center;
     justify-content: space-around;
     text-align: center;
-    width: 100%;
-    height: 100%;
+    min-width: 150px;
     font-family: var(--satoshi);
     color: var(--purple);
     background-color: #ffffff;
     gap: 10px;
     padding: 15px;
+    height: 100%;
 
     @media (max-width: 767px) {
       width: 100%;
@@ -342,6 +354,18 @@ const totalPrice = computed(() => {
 
     @media (max-width: 767px) {
       display: none;
+    }
+  }
+  &__delete {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+      top: 5%;
     }
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -33,9 +34,15 @@ export const useCartStore = defineStore("cart", () => {
     }
   }
 
+  function deleteFromCart(product) {
+    let index = cart.value.findIndex((item) => item.id === product.id);
+    cart.value.splice(index, 1);
+  }
+
   return {
     cart,
     addToCart,
     changeQuantity,
+    deleteFromCart,
   };
 });
